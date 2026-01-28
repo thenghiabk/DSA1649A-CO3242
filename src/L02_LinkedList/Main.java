@@ -14,6 +14,34 @@ class LinkedListADT<E> {
 	}
 
 	// methods
+	public void AddFirst (E element) {
+		Node<E> newNode = new Node<>(element);
+
+		// if list is empty
+		if (head == null && tail == null) {
+			head = newNode;
+			tail = newNode;
+		} else { // if list is not empty
+			newNode.next = head;
+			head = newNode;
+		}
+		size++;
+	}
+
+	public void AddLast (E element) {
+		Node<E> newNode = new Node<>(element);
+
+		// if list is empty
+		if (head == null && tail == null) {
+			head = newNode;
+			tail = newNode;
+		} else { // if list is not empty
+			tail.next = newNode;
+			tail = newNode;
+		}
+
+		size++;
+	}
 
 	// Node
 	private class Node<E> {
