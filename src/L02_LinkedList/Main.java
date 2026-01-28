@@ -43,6 +43,28 @@ class LinkedListADT<E> {
 		size++;
 	}
 
+	public E removeFirst () {
+		// if list is empty
+		if (head == null && tail == null) {
+			throw new IllegalStateException("List is empty.");
+		}
+
+		E oldElement = head.element;
+
+		if (head == tail) { // if list has only one element
+			head = null;
+			tail = null;
+		} else { // if list has more than one element
+			Node<E> tempNode = head;
+			head = head.next;
+			tempNode.next = null;
+		}
+
+		size--;
+		return oldElement;
+	}
+
+
 	// Node
 	private class Node<E> {
 		// attributes
