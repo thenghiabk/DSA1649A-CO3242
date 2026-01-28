@@ -64,6 +64,55 @@ class LinkedListADT<E> {
 		return oldElement;
 	}
 
+	public E removeLast () {
+		// if list is empty
+		if (head == null && tail == null) {
+			throw new IllegalStateException("List is empty.");
+		}
+
+		E oldElement = tail.element;
+
+		if (head == tail) { // if list has only one element
+			head = null;
+			tail = null;
+		} else { // if list has more than one element
+			Node<E> tempNode = head;
+			while (tempNode.next != tail) {
+				tempNode = tempNode.next;
+			}
+			tail = tempNode;
+			tail.next = null;
+		}
+
+		size--;
+		return oldElement;
+	}
+
+	public int size () {
+		return size;
+	}
+
+	public boolean isEmpty () {
+		return head == null && tail == null;
+	}
+
+	public E getFirst () {
+		// if list is empty
+		if (head == null && tail == null) {
+			throw new IllegalStateException("List is empty.");
+		}
+
+		return head.element;
+	}
+
+	public E getLast () {
+		// if list is empty
+		if (head == null && tail == null) {
+			throw new IllegalStateException("List is empty.");
+		}
+
+		return tail.element;
+	}
 
 	// Node
 	private class Node<E> {
